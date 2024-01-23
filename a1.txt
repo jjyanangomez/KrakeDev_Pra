@@ -1,5 +1,6 @@
-hola mi primer commit
-
 he cambiado
 soy mejor archivo
 ya no bebo
+
+me duró 2 semanas
+he vuelto a lo mismo
