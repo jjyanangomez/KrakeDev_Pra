@@ -52,6 +52,8 @@ calcularValorTotal = function(){
                 IVA esperado: 5.832
             Si el caso de prueba es exitoso, hacer un commit
         */
+    let lblComponenteIva = document.getElementById("lblValorIVA");
+    lblComponenteIva.innerText = valorIVA;
     //10. Invocar a calcularTotal y lo que devuelve guardar en la variable valorTotal
     //11. Mostrar el resultado en el componente lblTotal
      /*
