@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placas</title>
+    <script src="placas.js"></script>
+    <script src="serviciosPlaca.js"></script>
+    <script src="utilitarios.js"></script>
+    <script src="utilitariosCadenas.js"></script>
+    <link rel="stylesheet" href="placas.css">
+</head>
+<body>
+    <div class="principal">
+        <img src="./imagenes/logoKrakeDev.png" width="45%" />
+        <div class="contenido">
+            <div class="titulo">
+                PLACAS
+            </div>
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    INGRESE LA PLACA
+                </div>
+                <div>
+                    <input type="text" class="cajaTextoPlaca" id="txtPlaca" />
+                    <div class="error" id="lblValida"></div>
+                    <div class="error" id="lblError1"></div>
+                    <div class="error" id="lblProvincia"></div>
+                    <div class="error" id="lblTipo"></div>
+                    <div class="error" id="lblPico"></div>
+
+                </div>
+            </div>
+            <div class="botones">
+                <div class="contenedorBoton">
+                    <input type="button" value="VALIDAR" class="estiloBoton" onclick="validarPlaca();"/>
+                </div>
+                <div class="contenedorBoton">
+                    <input type="button" value="LIMPIAR" class="estiloBoton" onclick="limpiar();">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
