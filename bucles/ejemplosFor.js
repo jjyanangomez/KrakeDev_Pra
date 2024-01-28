@@ -36,3 +36,19 @@ mostrarInverso = function(){
     }
     console.log("Despues del for");
 }
+hackearNasaPelis = function(){
+    for(let porcentaje=0;porcentaje<=100;porcentaje+=10){
+        console.log("hackeando nasa "+porcentaje+"%");
+    }
+    console.log("La nasa ha sido hackeada XD");
+}
+//Presentar los numeros impares
+mostrarImpares = function(){
+    console.log("Antes del for");
+    for(let i=1;i<=21; i++){
+        if(i%2 != 0){
+            console.log(i);
+        }
+    }
+    console.log("Despues del for");
+}
