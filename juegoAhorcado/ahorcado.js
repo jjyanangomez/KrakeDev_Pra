@@ -1,7 +1,7 @@
 //No se olvide de respirar, mantenga la calma y demuestre lo que sabe
 let palabraSecreta;
-let intentos = 0;
-let coincidencias = 0;
+let intentos = 1;
+let coincidencias = 1;
 let errores = 0;
 esMayuscula = function(caracter){
     let valorAscii = caracter.charCodeAt(0);
@@ -62,10 +62,12 @@ validar = function(letra){
 }
 ingresarLetra = function(){
     if(coincidencias==5){
-        alert("HA GANADO");
+        //alert("HA GANADO");
+        mostrarImagen("ahorcadoImagen","ganador.gif");
     }
     if(intentos==10){
-        alert("HAS PERDIDO");
+        //alert("HAS PERDIDO");
+        mostrarImagen("ahorcadoImagen", "gameOver.gif");
     }
     let letra = recuperarTexto("txtLetra");
     if(esMayuscula(letra)){
