@@ -7,3 +7,15 @@ esMayuscula = function(caracter){
         return false;
     }
 }
+guardarPalabra = function(){
+    let letra;
+    let palabra = recuperarTexto("txtSecreta");
+    if(palabra.length ==5){
+        for(let i=0;i<palabra.length;i++){
+            letra = cadena.charAt(i);
+            if(!esMayuscula(letra)){
+                alert("Debe de ingresar una palabra 5 letras mayusculas");
+            }
+        }
+    }
+}
