@@ -31,3 +31,32 @@ invertirCadena = function(cadena){
     }
     return resultado;
 }
+
+buscarCadena = function(cadena, letra){
+    let caracter;
+    let existeLetra = false;
+    for(let i=0;i<cadena.length;i++){
+        caracter = cadena.charAt(i);
+        if(caracter == letra){
+            existeLetra = true;
+        }
+    }
+    if(existeLetra){
+        console.log("Existe");
+        return true;
+    }else{
+        console.log("No existe");
+        return false;
+    }
+}
+contarMayusculas = function(cadena){
+    let letra;
+    let contadorMayusculas = 0;
+    for(let i=0;i<cadena.length;i++){
+        letra = cadena.charAt(i);
+        if(esMayuscula(letra)){
+            contadorMayusculas++;
+        }
+    }
+    console.log(contadorMayusculas);
+}
