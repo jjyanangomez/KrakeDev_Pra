@@ -34,3 +34,22 @@ crearProducto = function(){
         console.log("Ambos productos tienen el mismo stock");
     }
 }
+modificarAtributos = function(){
+    let cuenta ={
+        numero: "532462879",
+        saldo: 0.0
+    }
+    cuenta.saldo = 100;
+    cuenta.saldo+=10;
+    console.log(cuenta.saldo);
+}
+crearCliente = function(){
+    let cliente ={
+        cedula: "110534076",
+        nombre : "Juan",
+    }
+    let cliente1={}
+    cliente1.nombre ="Romeo",
+    cliente1.apellido = "Salcedo",
+    cliente1.cedula ="123456789"
+}
