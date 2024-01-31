@@ -23,6 +23,7 @@ mostrarOpcionRol = function(){
     ocultarComponente("divEmpleado");
     ocultarComponente("divResumen");
     deshabilitarComponente("btnGuardarRol");
+    mostrarRoles();
 }
 mostrarOpcionResumen = function(){
     mostrarComponente("divResumen");
@@ -280,7 +281,50 @@ guardarRol = function(){
         console.log(objRol);
         alert('Rol guardado con éxito!');
         deshabilitarComponente("btnGuardarRol");
+        mostrarRoles();
     } else {
         alert('No se pudo guardar el rol');
     }
+}
+mostrarRoles = function(){
+    let cmpTabla = document.getElementById("tablaResumen");
+    let contenidoTabla ="<table class='neon-table'><tr>"+
+    "<th>CEDULA</th>"+
+    "<th>NOMBRE</th>"+
+    "<th>VALOR A PAGAR</th>"+
+    "<th>APORTE EMPLEADO</th>"+
+    "<th>APORTE EMPLEADOR</th>"+
+    "</tr>";
+    let elementoEmpleado;
+    for(let i=0;i<roles.length;i++){
+        elementoEmpleado = roles[i];
+        console.log(elementoEmpleado);
+        contenidoTabla+=
+        "<tr>"
+        +"<td>"+elementoEmpleado.cedula+"</td>"
+        +"<td>"+elementoEmpleado.nombre+"</td>"  
+        +"<td>"+elementoEmpleado.valorAPagar+"</td>" 
+        +"<td>"+elementoEmpleado.aporteEmpleado+"</td>" 
+        +"<td>"+elementoEmpleado.aporteEmpleador+"</td>"          
+        +"</tr>";
+    }
+    contenidoTabla +="</table>"
+    cmpTabla.innerHTML=contenidoTabla;
+}
+mostrarTotales = function(){
+    let totalEmpleado = 0;
+    let totalEmpleador = 0;
+    let totalAPagar = 0;
+
+    for (let i = 0; i < roles.length; i++) {
+        let elementoEmpleado = roles[i];
+        totalEmpleado += elementoEmpleado.aporteEmpleado;
+        totalEmpleador += elementoEmpleado.aporteEmpleador;
+        totalAPagar += elementoEmpleado.valorAPagar;
+    }
+    let totalNomina = totalEmpleado+totalEmpleador+totalAPagar;
+    mostrarTexto("infoTotalPago", totalAPagar.toFixed(2));
+    mostrarTexto("infoAporteEmpresa", totalEmpleador.toFixed(2));
+    mostrarTexto("infoAporteEmpleado", totalEmpleado.toFixed(2));
+    mostrarTexto("infoNomina",totalNomina.toFixed(2))
 }
