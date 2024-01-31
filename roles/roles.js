@@ -21,7 +21,7 @@ mostrarOpcionResumen = function(){
 }
 mostrarEmpleado = function(){
     let cmpTabla = document.getElementById("tablaEmpleados");
-    let contenidoTabla ="<table><tr>"+
+    let contenidoTabla ="<table class='neon-table'><tr>"+
     "<th>CEDULA</th>"+
     "<th>NOMBRE</th>"+
     "<th>APELLIDO</th>"+
