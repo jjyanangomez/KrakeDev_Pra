@@ -200,3 +200,14 @@ ejecutarBusqueda = function(){
         mostrarTextoEnCaja("txtSueldo",resultadoEmpleado.sueldo);
     }
 }
+buscarPorRol = function(){
+    let valorCedula = recuperarTexto("txtBusquedaCedulaRol");
+    let resultadoEmpleado = buscarEmpleado(valorCedula);
+    if(resultadoEmpleado==null){
+        alert("EMPLEADO NO EXISTE");
+    }else{
+        mostrarTexto("infoCedula",resultadoEmpleado.cedula);
+        mostrarTexto("infoNombre",resultadoEmpleado.nombre+" "+resultadoEmpleado.apellido);
+        mostrarTexto("infoSueldo",resultadoEmpleado.sueldo);
+    }
+}
