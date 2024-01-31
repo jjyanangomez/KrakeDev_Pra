@@ -56,3 +56,106 @@ ejecutarNuevo = function(){
     habilitarComponente("btnGuardar");
     esNuevo = true;
 }
+buscarEmpleado = function(cedula){
+    let elementoEmpleado;
+    let empleadoEncontrado = null;
+    for(let i=0;i<empleados.length;i++){
+        elementoEmpleado = empleados[i];
+        if(elementoEmpleado.cedula == cedula){
+            empleadoEncontrado = elementoEmpleado;
+            break;
+        }
+    }
+    return empleadoEncontrado;
+}
+agregarEmpleado = function(empleado){
+    let resultadoEmpleado = buscarEmpleado(empleado.cedula);
+    if(resultadoEmpleado==null){
+        empleados.push(empleado);
+        return true;
+    }else{
+        return false;
+    }
+}
+guardar = function(){
+    let valorCedula = recuperarTexto("txtCedula");
+    let valorNombre = recuperarTexto("txtNombre");
+    let valorApellido = recuperarTexto("txtApellido");
+    let AuxiliarSueldo = recuperarFloat("txtSueldo");
+    let valorSueldo = parseFloat(AuxiliarSueldo);
+    if(valorCedula=="" || valorNombre =="" || valorApellido=="" ||AuxiliarSueldo.length === 0){
+        alert('Todos los campos son obligatorios');
+        return false;
+    }
+    // Validar Cedula
+    if (valorCedula.length !== 10) {
+        alert('La cedula debe tener 10 caracteres');
+        return false;
+    }
+
+    for (let i = 0; i < valorCedula.length; i++) {
+        if (!esDigito(valorCedula[i])) {
+            alert('La cedula debe tener solo digitos');
+            return false;
+        }
+    }
+
+    // Validar Nombre
+    if (valorNombre.length < 3) {
+        alert('El nombre debe tener al menos 3 caracteres');
+        return false;
+    }
+
+    for (let i = 0; i < valorNombre.length; i++) {
+        if (!esMayuscula(valorNombre[i])) {
+            alert('Todos los caracteres del nombre deben ser Mayusculas');
+            return false;
+        }
+    }
+
+    // Validar Apellido
+    if (valorApellido.length < 3) {
+        alert('El apellido debe tener al menos 3 caracteres');
+        return false;
+    }
+
+    for (let i = 0; i < valorApellido.length; i++) {
+        if (!esMayuscula(valorApellido[i])) {
+            alert('Todos los caracteres del apellido deben ser Mayusculas');
+            return false;
+        }
+    }
+
+    // Validar Sueldo
+    if (valorSueldo < 400 || valorSueldo > 5000 || isNaN(valorSueldo)) {
+        alert('El sueldo debe estar entre 400 y 5000 y debe ser un numero valido');
+        return false;
+    }
+    if(esNuevo == true){
+        let empleado =[];
+        empleado.cedula = valorCedula;
+        empleado.nombre = valorNombre;
+        empleado.apellido = valorApellido;
+        empleado.sueldo = valorSueldo;
+        let resultadoEmpleado = agregarEmpleado(empleado);
+        if(resultadoEmpleado){
+            mostrarEmpleado();
+            limpiarDesabilitar();
+            alert("EMPLEADO GUARDADO CORRECTAMENTE");
+        }else{
+            alert("YA EXISTE UN EMPLEADO CON CEDULA: "+empleado.cedula);
+        }
+    }
+}
+limpiarDesabilitar = function(){
+    deshabilitarComponente("txtCedula");
+    deshabilitarComponente("txtNombre");
+    deshabilitarComponente("txtApellido");
+    deshabilitarComponente("txtSueldo");
+    deshabilitarComponente("btnGuardar");
+    //Limpiar las cajas de texto
+    mostrarTextoEnCaja("txtCedula","");
+    mostrarTextoEnCaja("txtNombre","");
+    mostrarTextoEnCaja("txtApellido","");
+    mostrarTextoEnCaja("txtSueldo","");
+}
