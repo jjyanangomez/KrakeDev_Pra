@@ -142,9 +142,32 @@ guardar = function(){
             mostrarEmpleado();
             limpiarDesabilitar();
             alert("EMPLEADO GUARDADO CORRECTAMENTE");
+            esNuevo = false;
         }else{
             alert("YA EXISTE UN EMPLEADO CON CEDULA: "+empleado.cedula);
         }
+    }else{
+        let editarEmpleado = buscarEmpleado(valorCedula);
+        if (editarEmpleado) {
+            // Validar los campos antes de modificar
+            let nuevoNombre = recuperarTexto("txtNombre");
+            let nuevoApellido = recuperarTexto("txtApellido");
+            let nuevoSueldo = recuperarTexto("txtSueldo");
+
+            if (nuevoNombre && nuevoApellido && nuevoSueldo) {
+                editarEmpleado.nombre = nuevoNombre;
+                editarEmpleado.apellido = nuevoApellido;
+                editarEmpleado.sueldo = nuevoSueldo;
+                alert('EMPLEADO MODIFICADO EXITOSAMENTE');
+                mostrarEmpleado();
+                limpiarDesabilitar();
+            } else {
+                alert('Los campos deben contener valores válidos');
+            }
+        } else {
+            alert('No se encontró un empleado con la cedula ' + empleado.cedula);
+        }
+        
     }
 }
 limpiarDesabilitar = function(){
@@ -158,4 +181,22 @@ limpiarDesabilitar = function(){
     mostrarTextoEnCaja("txtNombre","");
     mostrarTextoEnCaja("txtApellido","");
     mostrarTextoEnCaja("txtSueldo","");
+    esNuevo=false;
+}
+ejecutarBusqueda = function(){
+    let valorCedula = recuperarTexto("txtBusquedaCedula");
+    let resultadoEmpleado = buscarEmpleado(valorCedula);
+    if(resultadoEmpleado==null){
+        alert("EMPLEADO NO EXISTE");
+    }else{
+        deshabilitarComponente("txtCedula");
+        habilitarComponente("txtNombre");
+        habilitarComponente("txtApellido");
+        habilitarComponente("txtSueldo");
+        habilitarComponente("btnGuardar");
+        mostrarTextoEnCaja("txtNombre",resultadoEmpleado.nombre);
+        mostrarTextoEnCaja("txtApellido",resultadoEmpleado.apellido);
+        mostrarTextoEnCaja("txtCedula",resultadoEmpleado.cedula);
+        mostrarTextoEnCaja("txtSueldo",resultadoEmpleado.sueldo);
+    }
 }
