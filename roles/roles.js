@@ -211,3 +211,24 @@ buscarPorRol = function(){
         mostrarTexto("infoSueldo",resultadoEmpleado.sueldo);
     }
 }
+calcularAporteEmpleado= function(sueldo){
+    let aporte = sueldo*9.45/100;
+    return aporte.toFixed(2);
+}
+calcularValorAPagar = function(sueldo,aporte,descuento){
+    let resultado = sueldo-aporte-descuento
+    return resultado.toFixed(2);
+}
+calcularRol = function(){
+    let sueldo = recuperarFloatDiv("infoSueldo");
+    let descuentos = recuperarFloat("txtDescuentos");
+    if(!isNaN(descuentos)){
+        let aporteEmpleado = calcularAporteEmpleado(sueldo);
+        mostrarTexto("infoIESS", aporteEmpleado);
+        let valorAPagar = calcularValorAPagar(sueldo, aporteEmpleado, descuentos);
+        mostrarTexto("infoPago", valorAPagar);
+    }else{
+        alert("Ingrese el descuento");
+    }
+    
+}
